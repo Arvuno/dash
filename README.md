@@ -375,4 +375,13 @@ These are infrastructure guardrails, not prompt instructions. They hold regardle
 - [Self-Improving SQL Agent](https://www.ashpreetbedi.com/articles/sql-agent) — deep dive on an earlier architecture
 - [Agno Docs](https://docs.agno.com?utm_source=github&utm_medium=example-repo&utm_campaign=agent-example&utm_content=dash&utm_term=docs)
 
+## Roadmap
+
+- [ ] **Multi-source data support** — Connect to additional data sources beyond PostgreSQL (Snowflake, BigQuery, data warehouses)
+- [ ] **Proactive insights** — Scheduled analysis that surfaces trends and anomalies without being asked
+- [ ] **Custom agent roles** — Define domain-specific agents beyond Analyst and Engineer
+- [ ] **Enhanced Slack integration** — Rich interactive messages, buttons, and workflows
+- [ ] **Collaborative features** — Share query sessions, annotations, and insights with team members
+- [ ] **Advanced visualizations** — Native chart support and dashboard-style responses
+
 <p align="center">Built on <a href="https://github.com/agno-agi/agno">Agno</a> · the runtime for agentic software</p>
