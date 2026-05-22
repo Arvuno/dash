@@ -10,6 +10,9 @@ Chat with Dash via Slack, the terminal, or the [AgentOS](https://os.agno.com?utm
 # Clone the repo
 git clone https://github.com/agno-agi/dash.git && cd dash
 
+# Requirements: Docker and Docker Compose must be installed and running
+docker --version && docker compose version
+
 cp example.env .env
 # Edit .env and add your OPENAI_API_KEY
 
