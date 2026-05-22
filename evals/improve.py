@@ -170,7 +170,7 @@ def get_improvement_plan(
     prompt = _build_analysis_prompt(results, instructions_content, metrics_content, queries_content)
 
     response = client.chat.completions.create(
-        model="gpt-5.4",
+        model=getenv("DASH_MODEL", "gpt-4o"),
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": prompt},

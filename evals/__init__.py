@@ -10,9 +10,11 @@ Usage:
     python -m evals --verbose
 """
 
+from os import getenv
+
 from agno.models.openai import OpenAIResponses
 
-JUDGE_MODEL = OpenAIResponses(id="gpt-5.4")
+JUDGE_MODEL = OpenAIResponses(id=getenv("DASH_MODEL", "gpt-4o"))
 
 
 CATEGORIES: dict[str, dict] = {

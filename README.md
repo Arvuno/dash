@@ -336,6 +336,7 @@ python -m app.main        # AgentOS mode (web UI at os.agno.com)
 
 | Variable | Required | Default | Purpose |
 |----------|----------|---------|---------|
+| `DASH_MODEL` | No | `gpt-4o` | OpenAI model ID for agents (Responses API) |
 | `OPENAI_API_KEY` | Yes | — | OpenAI API key |
 | `SLACK_TOKEN` | No | `""` | Slack bot token (interface + tools) |
 | `SLACK_SIGNING_SECRET` | No | `""` | Slack signing secret (interface only) |

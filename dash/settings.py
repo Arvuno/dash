@@ -17,7 +17,9 @@ agent_db = get_postgres_db()
 
 # Model — full object, not just ID.
 # Change class + ID together when switching providers.
-MODEL = OpenAIResponses(id="gpt-5.4")
+# Configure via DASH_MODEL env var (default: gpt-4o)
+MODEL_ID = getenv("DASH_MODEL", "gpt-4o")
+MODEL = OpenAIResponses(id=MODEL_ID)
 
 # Slack
 SLACK_TOKEN = getenv("SLACK_TOKEN", "")
