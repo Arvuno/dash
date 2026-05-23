@@ -1,27 +1,25 @@
 # Dash
 
+
+## Quick Start
+
+Install with:
+```bash
+pip install dash
+```
+
+Or clone and run:
+```bash
+git clone https://github.com/agno-agi/dash.git
+cd dash
+python setup.py install
+```
+
+
 A **self-learning data agent** built with systems engineering principles. It grounds answers in 6 layers of context and improves with every query.
 
 Chat with Dash via Slack, the terminal, or the [AgentOS](https://os.agno.com?utm_source=github&utm_medium=example-repo&utm_campaign=agent-example&utm_content=dash&utm_term=agentos) web UI.
 
-## Quick Start
-
-```sh
-# Clone the repo
-git clone https://github.com/agno-agi/dash.git && cd dash
-
-cp example.env .env
-# Edit .env and add your OPENAI_API_KEY
-
-# Start the system
-docker compose up -d --build
-
-# Generate sample data and load knowledge
-docker exec -it dash-api python scripts/generate_data.py
-docker exec -it dash-api python scripts/load_knowledge.py
-```
-
-Confirm Dash is running at [http://localhost:8000/docs](http://localhost:8000/docs).
 
 ### Connect to the Web UI
 
