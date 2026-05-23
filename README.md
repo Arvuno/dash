@@ -11,7 +11,7 @@ Chat with Dash via Slack, the terminal, or the [AgentOS](https://os.agno.com?utm
 git clone https://github.com/agno-agi/dash.git && cd dash
 
 cp example.env .env
-# Edit .env and add your OPENAI_API_KEY
+# Edit .env and add your OPENAI_API_KEY (get one at https://platform.openai.com/api-keys)
 
 # Start the system
 docker compose up -d --build
