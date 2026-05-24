@@ -1,0 +1,78 @@
+name: Security Dependencies
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+    branches: ["main"]
+
+env:
+  UV_SYSTEM_PYTHON: 1
+
+jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install the project with dev dependencies
+        run: uv sync --extra dev
+
+      - name: Install pip-audit
+        run: uv pip install pip-audit
+
+      - name: Run pip-audit
+        run: uv run pip-audit --strict --require-hashes
+        continue-on-error: true
+
+      - name: Install safety
+        run: uv pip install safety
+
+      - name: Run safety check
+        run: uv run safety check --full-report
+        continue-on-error: true
+
+  dependency-review:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Diff requirements
+        run: |
+          if [ -f requirements.txt ]; then
+            echo "Requirements file exists"
+            wc -l requirements.txt
+          else
+            echo "No requirements.txt found"
+            exit 1
+          fi
+
+      - name: Get added dependencies
+        run: |
+          git fetch origin main --depth=1
+          if git diff origin/main HEAD --name-only | grep -E "^(pyproject\.toml|requirements\.txt)$" > /dev/null 2>&1; then
+            echo "Dependency files changed"
+            git diff origin/main HEAD -- pyproject.toml requirements.txt || true
+          else
+            echo "No dependency file changes detected"
+          fi
