@@ -376,3 +376,6 @@ These are infrastructure guardrails, not prompt instructions. They hold regardle
 - [Agno Docs](https://docs.agno.com?utm_source=github&utm_medium=example-repo&utm_campaign=agent-example&utm_content=dash&utm_term=docs)
 
 <p align="center">Built on <a href="https://github.com/agno-agi/agno">Agno</a> · the runtime for agentic software</p>
+
+## Contributing
+PRs welcome!
