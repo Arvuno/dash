@@ -65,7 +65,7 @@ The agent retrieves relevant context at query time via hybrid search, then gener
 
 ## The Self-Learning Loop
 
-Dash improves without retraining or fine-tuning. We call this gpu-poor continuous learning.
+Dash improves without retraining or fine-tuning. We call this **GPU-poor** continuous learning.
 
 It learns through two complementary systems:
 
@@ -89,15 +89,9 @@ Execute and interpret
  ↓         ↓
 Success    Error
  ↓         ↓
- ↓         Diagnose → Fix → Save Learning
- ↓                           (never repeated)
- ↓
-Return insight
- ↓
-Optionally save as Knowledge
-```
-
-**Knowledge** is curated—validated queries and business context you want the agent to build on.
+↓         Diagnose → Fix → Save Learning
+↓
+**Knowledge** is curated
 
 **Learnings** is discovered—patterns the agent finds through trial and error. When a query fails because `position` is TEXT not INTEGER, the agent saves that gotcha. Next time, it knows.
 
