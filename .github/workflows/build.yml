@@ -1,0 +1,61 @@
+name: Build Verification
+
+on:
+  push:
+    branches: ["main", "ci/**"]
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+    branches: ["main"]
+
+env:
+  UV_SYSTEM_PYTHON: 1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: uv sync --extra dev
+
+      - name: Generate requirements.txt
+        run: uv pip compile pyproject.toml -o requirements.txt
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          load: true
+          tags: dash:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Verify image can start
+        run: |
+          docker run --rm --entrypoint python dash:test -c "
+            import dash
+            import db
+            import app
+            print('All modules imported successfully')
+          "
