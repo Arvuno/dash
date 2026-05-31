@@ -204,7 +204,7 @@ See [Security](#security) for setup details.
 
 ### 4. Interface Engineering
 
-One agent definition, multiple surfaces. Dash is reachable via REST API (FastAPI), Slack threads, and the AgentOS web UI. Each surface has its own identity system: a Slack user ID maps to sessions via thread timestamps, the API uses JWT-backed auth.
+One agent definition, multiple surfaces. Dash is reachable via REST API (FastAPI), Slack threads, and the AgentOS web UI. Each surface has it's own identity system: a Slack user ID maps to sessions via thread timestamps, the API uses JWT-backed auth.
 
 ### 5. Infrastructure Engineering
 

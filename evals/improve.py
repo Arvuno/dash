@@ -213,7 +213,7 @@ def _backup(path: Path, round_num: int) -> Path:
 
 
 def _restore(path: Path, round_num: int) -> bool:
-    """Restore a file from its backup."""
+    """Restore a file from it's backup."""
     backup_path = path.parent / f"{path.name}.bak.round-{round_num}"
     if backup_path.exists():
         shutil.copy2(backup_path, path)

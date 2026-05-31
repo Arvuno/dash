@@ -4,7 +4,7 @@ Slack gives Dash two capabilities:
 1. **Receiving messages** — users interact with Dash via DMs, @mentions, and thread replies.
 2. **Sending messages** — Dash posts to channels proactively (scheduled task results) or on request.
 
-Each Slack thread maps to a session ID, so every thread gets its own conversation context.
+Each Slack thread maps to a session ID, so every thread gets it's own conversation context.
 
 ## Prerequisites
 

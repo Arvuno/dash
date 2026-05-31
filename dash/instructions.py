@@ -4,7 +4,7 @@ Dash Instructions
 
 Modular instruction builders for each agent role.
 Instructions are composed dynamically — the Analyst embeds
-the semantic model and business rules into its prompt.
+the semantic model and business rules into it's prompt.
 """
 
 from dash.context.business_rules import build_business_context
